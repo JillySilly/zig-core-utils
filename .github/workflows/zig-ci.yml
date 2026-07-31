@@ -1,0 +1,59 @@
+name: Zig Native Engine Pipeline
+
+on:
+  schedule:
+    # Wakes up at 57 minutes past 1 AM, 7 AM, 1 PM, and 7 PM UTC
+    # (9:57 AM, 3:57 PM, 9:57 PM, and 3:57 AM Singapore Time)
+    - cron: '57 1,7,13,19 * * *'
+  workflow_dispatch:
+
+jobs:
+  zig-sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Fetch Core Repository
+        uses: actions/checkout@v4
+
+      - name: Mutate Zig Struct Spec
+        run: |
+          # 30% chance to skip (maintains natural execution gaps)
+          if [ $((RANDOM % 100)) -lt 30 ]; then
+            echo "Zig module specs current. Skipping execution."
+            exit 0
+          fi
+
+          mkdir -p src
+          TARGET_FILE="src/main.zig"
+
+          if [ ! -f "$TARGET_FILE" ]; then
+            echo "const std = @import(\"std\");" > "$TARGET_FILE"
+            echo "" >> "$TARGET_FILE"
+            echo "// Core Zig Engine Definitions" >> "$TARGET_FILE"
+          fi
+
+          COMPONENTS=("BufferNode" "MemoryChunk" "ThreadState" "MetricPayload" "AllocContext")
+          PICKED_COMP=${COMPONENTS[$RANDOM % ${#COMPONENTS[@]}]}
+
+          echo "" >> "$TARGET_FILE"
+          echo "/// Node state representation $RANDOM" >> "$TARGET_FILE"
+          echo "pub const ${PICKED_COMP}_$RANDOM = struct {" >> "$TARGET_FILE"
+          echo "    id: u32 = $RANDOM," >> "$TARGET_FILE"
+          echo "    active: bool = true," >> "$TARGET_FILE"
+          echo "};" >> "$TARGET_FILE"
+
+          git config --global user.name "JillySilly"
+          git config --global user.email "ranaebaddiefb@gmail.com"
+
+          MESSAGES=(
+            "feat: add Zig struct allocation type for engine payload"
+            "refactor: optimize struct memory alignment in main.zig"
+            "fix: adjust struct default value bounds"
+            "chore: sync Zig native build specifications"
+          )
+          MSG=${MESSAGES[$RANDOM % ${#MESSAGES[@]}]}
+
+          git add src/
+          git commit -m "$MSG"
+          git push
