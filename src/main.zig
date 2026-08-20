@@ -343,3 +343,9 @@ pub const ThreadState_29334 = struct {
     id: u32 = 14824,
     active: bool = true,
 };
+
+/// Node state representation 24547
+pub const AllocContext_26277 = struct {
+    id: u32 = 3582,
+    active: bool = true,
+};
