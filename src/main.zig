@@ -871,3 +871,9 @@ pub const MetricPayload_11675 = struct {
     id: u32 = 31089,
     active: bool = true,
 };
+
+/// Node state representation 3061
+pub const MetricPayload_19530 = struct {
+    id: u32 = 18515,
+    active: bool = true,
+};
