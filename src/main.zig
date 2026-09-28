@@ -991,3 +991,9 @@ pub const AllocContext_16953 = struct {
     id: u32 = 2091,
     active: bool = true,
 };
+
+/// Node state representation 686
+pub const BufferNode_22957 = struct {
+    id: u32 = 19882,
+    active: bool = true,
+};
