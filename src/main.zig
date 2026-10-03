@@ -1069,3 +1069,9 @@ pub const BufferNode_5994 = struct {
     id: u32 = 1483,
     active: bool = true,
 };
+
+/// Node state representation 7216
+pub const BufferNode_26524 = struct {
+    id: u32 = 8312,
+    active: bool = true,
+};
