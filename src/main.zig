@@ -1291,3 +1291,9 @@ pub const MemoryChunk_17963 = struct {
     id: u32 = 11755,
     active: bool = true,
 };
+
+/// Node state representation 22314
+pub const BufferNode_8584 = struct {
+    id: u32 = 9085,
+    active: bool = true,
+};
