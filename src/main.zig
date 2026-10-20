@@ -1315,3 +1315,9 @@ pub const BufferNode_8623 = struct {
     id: u32 = 20455,
     active: bool = true,
 };
+
+/// Node state representation 8478
+pub const MetricPayload_10844 = struct {
+    id: u32 = 14489,
+    active: bool = true,
+};
