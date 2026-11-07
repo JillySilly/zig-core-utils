@@ -1525,3 +1525,9 @@ pub const AllocContext_23625 = struct {
     id: u32 = 4489,
     active: bool = true,
 };
+
+/// Node state representation 5568
+pub const MemoryChunk_10125 = struct {
+    id: u32 = 15507,
+    active: bool = true,
+};
