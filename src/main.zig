@@ -1603,3 +1603,9 @@ pub const AllocContext_1029 = struct {
     id: u32 = 19099,
     active: bool = true,
 };
+
+/// Node state representation 26586
+pub const MetricPayload_6060 = struct {
+    id: u32 = 19846,
+    active: bool = true,
+};
